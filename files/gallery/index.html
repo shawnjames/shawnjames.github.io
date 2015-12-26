@@ -1,57 +1,64 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
-  <head>
-    <title>Simple Photo Gallery with HTML and JavaScript</title>
-<style type="text/css">
-  body {
-    background: #222;
-    margin: 0;
 
-  }
-  .thumbnails img {
-    height: 80px;
-    border: 4px solid #555;
-    padding: 1px;
-    margin: 0 10px 10px 0;
-  }
+ <head> 
+		<meta charset="utf-8"> 
+   <link rel="stylesheet" href="css/blueimp-gallery.min.css">
 
-  .thumbnails img:hover {
-    border: 4px solid #00ccff;
-    cursor:pointer;
-  }
+ </head>
 
-  .preview img {
-    border: 4px solid #444;
-    padding: 1px;
-    width: 800px;
-  }
-</style>
-  </head>
+ <body>
 
-  <body>
-<div class="gallery" align="center">
-  <h3 style="color: #ffffff;">Selection of ceramic art. Copyright Betty James 2015.</h3>
-
-<div class="thumbnails">
-  <img onmouseover="preview.src=img1.src" name="img1" src="img1.jpg" alt="" />
-  <img onmouseover="preview.src=img2.src" name="img2" src="img2.jpg" alt="" />
-  <img onmouseover="preview.src=img3.src" name="img3" src="img3.jpg" alt="" />
-  <img onmouseover="preview.src=img4.src" name="img4" src="img4.jpg" alt="" />
-  <img onmouseover="preview.src=img5.src" name="img5" src="img5.jpg" alt="" />
-  <br/>
-  <img onmouseover="preview.src=img6.src" name="img6" src="img6.jpg" alt="" />
-  <img onmouseover="preview.src=img7.src" name="img7" src="img7.jpg" alt="" />
-  <img onmouseover="preview.src=img8.src" name="img8" src="img8.jpg" alt="" />
-</div>
-<br/>
-<div class="preview" align="center">
-  <img name="preview" src="img1.jpg" alt=""/>
-  <br/>
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
 </div>
 
-</div> <!-- Close the gallery div --4>
-<br/>
-<strong>Selection of ceramic bird art. Copyright Betty James 2015.</strong>
+<div id="links">
+    <a href="img1.jpg" title="Img 1">
+        <img src="thumbnails/tn-img1.jpg" alt="Banana">
+    </a>
+    <a href="img2.jpg" title="Img 2">
+        <img src="thumbnails/tn-img2.jpg" alt="Apple">
+    </a>
+    <a href="img3.jpg" title="Img 3">
+        <img src="thumbnails/tn-img3.jpg" alt="Orange">
+    </a>
+    <a href="img4.jpg" title="Img 4">
+        <img src="thumbnails/tn-img4.jpg" alt="Banana">
+    </a>
+    <a href="img5.jpg" title="Img 5">
+        <img src="thumbnails/tn-img5.jpg" alt="Apple">
+    </a>
+    <a href="img6.jpg" title="Img 6">
+        <img src="thumbnails/tn-img6.jpg" alt="Orange">
+		</a>
+    <a href="img7.jpg" title="Img 7">
+        <img src="thumbnails/tn-img7.jpg" alt="Banana">
+    </a>
+    <a href="img8.jpg" title="Img 8">
+        <img src="thumbnails/tn-img8.jpg" alt="Apple">
+    </a>
+</div>
 
-  </body>
+
+<script src="js/blueimp-gallery.min.js"></script>
+<script>
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
+
+
+ </body>
+
 </html>
